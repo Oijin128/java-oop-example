@@ -1,7 +1,6 @@
-// eh asu
 import java.util.Scanner;
 
-class Main {
+class main {
 
   static Scanner scan = new Scanner(System.in);
   static Library library = new Library();
@@ -111,7 +110,6 @@ class Main {
     
     library.addMember(member);
   }
-}
   public static void addBook() {
 	    Book book = new Book();
 

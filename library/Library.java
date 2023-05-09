@@ -3,11 +3,16 @@ import java.util.ArrayList;
 class Library {
   public ArrayList<Book> books = new ArrayList<Book>();
   public ArrayList<Member> members = new ArrayList<Member>();
+  public ArrayList<Book> borrowedBooks = new ArrayList<Book>();
 
   public void addMember(Member member) {
     this.members.add(member);
   }
 
+  public void addBook(Book book) {
+	  this.books.add(book);
+  }
+  
   public Boolean isMemberIdExist(String id) {
     Boolean isExist = false;
     for (Member member : this.members) {
@@ -20,6 +25,7 @@ class Library {
 
   public void giveBook(String bookId, String memberId) {
     Book book = this.getBookById(bookId);
+    this.borrowedBooks.add(book);
     this.books.remove(book);
 
     Member member = this.getMemberById(memberId);
@@ -28,7 +34,7 @@ class Library {
   }
 
   public void receiveBook(String bookId, String memberId) {
-    Book book = this.getBookById(bookId);
+    Book book = this.getBorrowedBookById(bookId);
     this.books.add(book);
 
     Member member = this.getMemberById(memberId);
@@ -57,4 +63,14 @@ class Library {
     }
     return null;
   }
-}
+
+
+private Book getBorrowedBookById(String id) {
+    for (Book book : this.borrowedBooks) {
+        if (book.id.equals(id)) {
+          return book;
+        }
+      }
+      return null;
+    }
+  }

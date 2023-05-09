@@ -109,11 +109,7 @@ class Main {
     System.out.print("name : ");
     member.name = scan.next();
     
-    if (member.id != member.id) {
-
     library.addMember(member);
-  } else {
-	  System.out.println("aa");
   }
 }
   public static void addBook() {
